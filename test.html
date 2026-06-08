@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MakeMyStudy — Find Courses & Top Universities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #0071c2;
+            --accent: #00baf2;
+            --card-radius: 14px;
+            --shadow: 0 8px 30px rgba(6, 18, 38, 0.12);
+            --muted: #6b7280;
+        }
+
+        body {
+            font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: #f4f6f9;
+            color: #05204a;
+        }
+
+        /* Top bar (MakeMyTrip style) */
+        .topbar {
+            background: linear-gradient(180deg, #152233, #0f2a3a);
+            color: #fff;
+            padding: 12px 0;
+        }
+
+        .brand {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.25rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .login-btn {
+            background: var(--accent);
+            color: #fff;
+            border-radius: 20px;
+            padding: 6px 14px;
+            border: 0;
+            font-weight: 600;
+        }
+
+        /* Hero & search */
+        .hero {
+            background: url('./images/net.jpg') center/cover no-repeat, linear-gradient(180deg, rgba(4, 9, 22, 0.55), rgba(4, 9, 22, 0.15));
+            padding: 32px 0 70px;
+        }
+
+        .search-card {
+            background: #fff;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            padding: 22px;
+            margin-top: 18px;
+        }
+
+        .tabs-ct {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .search-field {
+            border-radius: 12px;
+            border: 1px solid #e6eef8;
+            padding: 14px;
+            background: #fff;
+        }
+
+        .swap-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #e6eef8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 22px rgba(16, 47, 86, 0.06);
+            cursor: pointer;
+        }
+
+        .chip {
+            border-radius: 10px;
+            padding: 10px 12px;
+            border: 1px solid #e3eefb;
+            cursor: pointer;
+            font-weight: 600;
+            background: #fff;
+        }
+
+        .chip.active {
+            background: #e7f8ff;
+            border-color: var(--accent);
+            color: var(--brand);
+            box-shadow: 0 4px 18px rgba(0, 122, 200, 0.06);
+        }
+
+        .search-cta {
+            background: linear-gradient(90deg, var(--accent), var(--brand));
+            color: #fff;
+            border-radius: 28px;
+            padding: 12px 40px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: 0;
+        }
+
+        .small-muted {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        /* results */
+        .results-section {
+            margin-top: 22px;
+        }
+
+        .uni-card {
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(14, 30, 60, 0.06);
+            padding: 14px;
+            background: #fff;
+            border: 1px solid #eef6fb;
+        }
+
+        .rating {
+            background: linear-gradient(180deg, #07c, #0066b3);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .sticky-search {
+            position: sticky;
+            bottom: 18px;
+            z-index: 90;
+            display: flex;
+            justify-content: center;
+        }
+
+        @media(max-width:991px) {
+            .tabs-ct {
+                flex-wrap: wrap
+            }
+
+            .hero {
+                padding-bottom: 40px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+                <div class="brand">MakeMyStudy</div>
+                <nav class="d-none d-md-flex">
+                    <a class="nav-link" href="#">Courses</a>
+                    <a class="nav-link" href="#">Colleges</a>
+                    <a class="nav-link" href="#">Scholarships</a>
+                    <a class="nav-link" href="#">Exams</a>
+                    <a class="nav-link" href="#">Counseling</a>
+                </nav>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <button class="login-btn">Login / Signup</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Search -->
+    <section class="hero">
+        <div class="container">
+            <div class="search-card mx-auto" style="max-width:1100px;">
+                <!-- Tabs like OneWay/RoundTrip -->
+                <div class="tabs-ct mb-3">
+                    <button class="btn btn-sm btn-outline-primary" id="tab-undergrad">Undergraduate</button>
+                    <button class="btn btn-sm btn-outline-primary" id="tab-postgrad">Postgraduate</button>
+                    <button class="btn btn-sm btn-outline-primary" id="tab-diploma">Diploma</button>
+                </div>
+
+                <!-- Main row -->
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-4 col-md-6">
+                        <label class="small-muted">From</label>
+                        <div class="d-flex gap-2 align-items-center">
+                            <input id="input-from" class="form-control search-field" list="cities"
+                                placeholder="City (e.g., Delhi)">
+                            <datalist id="cities">
+                                <option>Delhi</option>
+                                <option>Mumbai</option>
+                                <option>Bengaluru</option>
+                                <option>Chennai</option>
+                                <option>Kolkata</option>
+                                <option>Pune</option>
+                                <option>Hyderabad</option>
+                                <option>Lucknow</option>
+                            </datalist>
+                        </div>
+                        <div class="small-muted mt-1">Select your preferred city/state</div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-5">
+                        <label class="small-muted">To (University / College)</label>
+                        <div class="d-flex gap-2">
+                            <input id="input-to" class="form-control search-field" list="unis"
+                                placeholder="e.g., IIT Bombay, Delhi University">
+                            <datalist id="unis">
+                                <option>IIT Bombay</option>
+                                <option>IIT Delhi</option>
+                                <option>Delhi University</option>
+                                <option>JNU</option>
+                                <option>IIT Madras</option>
+                                <option>IISc Bangalore</option>
+                                <option>St. Xavier's College</option>
+                                <option>Symbiosis</option>
+                            </datalist>
+                            <button class="swap-btn" id="swap"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                    height="18" fill="#0071c2" viewBox="0 0 24 24">
+                                    <path d="M7 7l5-5 5 5H7zm10 10l-5 5-5-5h10z" />
+                                </svg></button>
+                        </div>
+                        <div class="small-muted mt-1">Search universities or type to see suggestions</div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="small-muted">Session Start</label>
+                                <input id="input-date" type="date" class="form-control search-field">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small-muted">Course</label>
+                                <select id="input-course" class="form-select search-field">
+                                    <option value="B.Tech">B.Tech</option>
+                                    <option value="B.Sc">B.Sc</option>
+                                    <option value="BBA">BBA</option>
+                                    <option value="MBA">MBA</option>
+                                    <option value="M.Tech">M.Tech</option>
+                                    <option value="M.Sc">M.Sc</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chips & options -->
+                <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
+                    <div class="chip active" data-val="Regular">Regular</div>
+                    <div class="chip" data-val="Scholarship">Scholarship</div>
+                    <div class="chip" data-val="Management">Management Quota</div>
+                    <div class="chip" data-val="Online">Online Learning</div>
+
+                    <div class="ms-auto d-flex align-items-center gap-2">
+                        <input id="counseling" type="checkbox" class="form-check-input" />
+                        <label for="counseling" class="small-muted mb-0">Add Free Counseling</label>
+                    </div>
+                </div>
+
+                <!-- Search action -->
+                <div class="d-flex mt-4 align-items-center">
+                    <div class="me-auto small-muted">Showing top universities & courses — refined results after search
+                    </div>
+                    <div class="sticky-search">
+                        <button id="btn-search" class="search-cta">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results area -->
+            <div id="results" class="results-section container mt-4" style="max-width:1100px;"></div>
+        </div>
+    </section>
+
+    <!-- Example top universities row (static promo) -->
+    <section class="container mt-4">
+        <h5 class="mb-3">Top Universities</h5>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <div class="uni-card text-center p-3">
+                    <img src="https://dummyimage.com/100x60/ddd/111&text=IITB" alt="" class="mb-2">
+                    <div class="fw-bold">IIT Bombay</div>
+                    <div class="small-muted">Engineering • Research</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="uni-card text-center p-3">
+                    <img src="https://dummyimage.com/100x60/ddd/111&text=IITD" alt="" class="mb-2">
+                    <div class="fw-bold">IIT Delhi</div>
+                    <div class="small-muted">Engineering •  Innovations</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="uni-card text-center p-3">
+                    <img src="https://dummyimage.com/100x60/ddd/111&text=DU" alt="" class="mb-2">
+                    <div class="fw-bold">Delhi University</div>
+                    <div class="small-muted">Arts • Science • Commerce</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="uni-card text-center p-3">
+                    <img src="https://dummyimage.com/100x60/ddd/111&text=IISc" alt="" class="mb-2">
+                    <div class="fw-bold">IISc Bangalore</div>
+                    <div class="small-muted">Science • Research</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sample "database" of universities to search (client-side)
+        const universities = [
+            { name: "IIT Bombay", city: "Mumbai", courses: ["B.Tech", "M.Tech"], rating: 9.6, tags: ["Engineering", "Research"] },
+            { name: "IIT Delhi", city: "Delhi", courses: ["B.Tech", "M.Tech"], rating: 9.5, tags: ["Engineering"] },
+            { name: "Delhi University", city: "Delhi", courses: ["B.Sc", "BBA", "B.Tech"], rating: 8.2, tags: ["Arts", "Science", "Commerce"] },
+            { name: "IISc Bangalore", city: "Bengaluru", courses: ["M.Sc", "PhD"], rating: 9.4, tags: ["Science", "Research"] },
+            { name: "Symbiosis Pune", city: "Pune", courses: ["BBA", "MBA"], rating: 8.0, tags: ["Management"] },
+            { name: "St. Xavier's College", city: "Mumbai", courses: ["B.Sc", "B.A"], rating: 8.1, tags: ["Arts"] },
+            { name: "BITS Pilani", city: "Pilani", courses: ["B.Tech", "M.Sc", "MBA"], rating: 8.9, tags: ["Engineering", "Management"] }
+        ];
+
+        // UI wiring
+        const chips = document.querySelectorAll('.chip');
+        chips.forEach(c => c.addEventListener('click', () => {
+            chips.forEach(x => x.classList.remove('active'));
+            c.classList.add('active');
+        }));
+
+        document.getElementById('swap').addEventListener('click', () => {
+            const a = document.getElementById('input-from');
+            const b = document.getElementById('input-to');
+            const ta = a.value; a.value = b.value; b.value = ta;
+        });
+
+        // Tabs (visual only)
+        ['tab-undergrad', 'tab-postgrad', 'tab-diploma'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.tabs-ct button').forEach(b => b.classList.remove('btn-primary'));
+                el.classList.add('btn-primary');
+                // optionally change course list or UI based on tab
+                if (id === 'tab-undergrad') setCourseOptions(['B.Tech', 'B.Sc', 'BBA']);
+                if (id === 'tab-postgrad') setCourseOptions(['MBA', 'M.Tech', 'M.Sc']);
+                if (id === 'tab-diploma') setCourseOptions(['Diploma - Engg', 'Diploma - Management']);
+            });
+        });
+        // default active
+        document.getElementById('tab-undergrad').classList.add('btn-primary');
+
+        function setCourseOptions(arr) {
+            const sel = document.getElementById('input-course');
+            sel.innerHTML = '';
+            arr.forEach(v => {
+                const o = document.createElement('option'); o.value = v; o.textContent = v;
+                sel.appendChild(o);
+            });
+        }
+
+        // Search behavior: filter sample data and show cards
+        document.getElementById('btn-search').addEventListener('click', doSearch);
+
+        function doSearch() {
+            const city = (document.getElementById('input-from').value || '').trim().toLowerCase();
+            const uniQ = (document.getElementById('input-to').value || '').trim().toLowerCase();
+            const course = document.getElementById('input-course').value;
+            const category = document.querySelector('.chip.active').dataset.val;
+            const counseling = document.getElementById('counseling').checked;
+
+            // filter
+            const results = universities.filter(u => {
+                // match by city OR name OR course
+                const cityMatch = city ? u.city.toLowerCase().includes(city) : true;
+                const uniMatch = uniQ ? u.name.toLowerCase().includes(uniQ) : true;
+                const courseMatch = course ? u.courses.map(c => c.toLowerCase()).includes(course.toLowerCase()) || u.courses.join(' ').toLowerCase().includes(course.toLowerCase()) : true;
+                return cityMatch && uniMatch && courseMatch;
+            });
+
+            renderResults(results, { city, uniQ, course, category, counseling });
+            // scroll to results
+            const resEl = document.getElementById('results');
+            if (results.length) resEl.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderResults(list, meta) {
+            const cont = document.getElementById('results');
+            cont.innerHTML = '';
+            if (list.length === 0) {
+                cont.innerHTML = `<div class="alert alert-info">No results found — try broadening city or course. <button class="btn btn-sm btn-primary ms-2" onclick="showAll()">Show popular</button></div>`;
+                return;
+            }
+            const row = document.createElement('div'); row.className = 'row g-3';
+            list.forEach(u => {
+                const col = document.createElement('div'); col.className = 'col-lg-6';
+                col.innerHTML = `
+          <div class="uni-card d-flex gap-3 align-items-center">
+            <div style="flex:0 0 90px;">
+              <img src="https://dummyimage.com/90x70/ddd/111&text=${encodeURIComponent(u.name.split(' ')[0])}" alt="" style="width:90px;border-radius:8px;">
+            </div>
+            <div style="flex:1;">
+              <div class="d-flex align-items-start justify-content-between">
+                <div>
+                  <div class="fw-bold" style="font-size:1.05rem">${u.name}</div>
+                  <div class="small-muted">${u.city} • ${u.tags.join(' • ')}</div>
+                </div>
+                <div class="text-end">
+                  <div class="rating">${u.rating}</div>
+                  <div class="small-muted mt-1">Rating</div>
+                </div>
+              </div>
+              <div class="mt-2 small-muted">Courses: ${u.courses.join(', ')}</div>
+              <div class="mt-3 d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary" onclick="viewDetails('${u.name}')">View</button>
+                <button class="btn btn-sm btn-primary" onclick="applyNow('${u.name}')">Apply</button>
+              </div>
+            </div>
+          </div>
+        `;
+                row.appendChild(col);
+            });
+            cont.appendChild(row);
+        }
+
+        // fallback: show all popular
+        function showAll() {
+            renderResults(universities, {});
+        }
+
+        // simple actions
+        function viewDetails(name) {
+            alert('Open details for: ' + name + '\\n(You can convert this to modal / new page.)');
+        }
+        function applyNow(name) {
+            alert('Start application process for: ' + name + '\\n(Integrate with forms or payment gateway.)');
+        }
+
+        // initial: show popular
+        showAll();
+    </script>
+</body>
+
+</html>

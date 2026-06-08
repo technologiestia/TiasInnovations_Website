@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tia's  Innovationss Pvt Ltd </title>
+    <link rel="icon" href="./images/Media (4).jpg" type="image/x-icon">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+     body {
+      font-family: 'Montserrat', sans-serif;
+      background: #a2bd00;
+   
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: hwb(0 7% 92%);
+      margin-top: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 20px 10px;
+      transition: background 0.4s;
+    }
+
+    .card:hover .overlay {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .overlay h3 {
+      margin: 0;
+      
+      font-size: 1.3rem;
+    }
+</style>
+<body>
+
+
+
+    <!-- Main navigation -->
+    <nav class="navbar navbar-expand-lg  bg-white main-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <img src="./images/Media (4).jpg" alt="Tiatech logo" width="80" height="60" class="rounded" />
+            </a>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products & Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="#">Product Catalog</a></li>
+                            <li><a class="dropdown-item" href="#">Ongoing Projects</a></li>
+                            <li><a class="dropdown-item" href="#">Completed Work</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="healer.html">Tia's healer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact Us</a></li>
+                    <li class="nav-item d-flex align-items-center ms-lg-3">
+                        <a class="nav-link d-none d-lg-inline" href="#search" title="Search"><i
+                                class="bi bi-search"></i></a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-primary cta-btn d-flex align-items-center"
+                            href="https://play.google.com/store/apps/details?id=com.user.healme" target="_blank"
+                            rel="noopener noreferrer">
+
+                            <!-- App Icon (Font Awesome / Custom Image) -->
+                            <i class="fab fa-google-play me-2"></i>
+
+                            <img src="./images/888857.png" width="20px"> Download Now
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section with background and animation -->
+    <section class="helar-sec">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class=""> Tia's healer</h1>
+                <h3 className="text-4xl font-bold text-right mb-6 hel">
+                    Join as a healer at Tia's healing application if you have expertise with innerwork coaching and
+                    alternate therepies. <br />
+                </h3>
+
+                <div class="mt-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.user.healme" target="_blank"
+                        class="btn btn-custom">Download Tia's healer now. </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- <h2 class="text-dark mt-6">Healing Modalities</h2> -->
+
+<div class= " container grid py-4">
+     <div class="card">
+    <img src="./images/Music & Sound Therapy.webp" alt="Music & Sound Therapy">
+    <div class="overlay"><h3>Music & Sound Therapy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Childhood Trauma Healing.webp" alt="Childhood Trauma Healing">
+    <div class="overlay"><h3>Childhood Trauma Healing</h3></div>
+  </div>
+  <div class="card">
+    <img src="./images/naturopathy-yoga-admission-fees.webp" alt="Naturopathy">
+    <div class="overlay"><h3>Naturopathy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Water Therapy.jpg" alt="Water Therapy">
+    <div class="overlay"><h3>Water Therapy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Bach Flower Remedy.jpg" alt="Bach Flower Remedy">
+    <div class="overlay"><h3>Bach Flower Remedy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Ayurveda.webp" alt="Ayurveda">
+    <div class="overlay"><h3>Ayurveda</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Psychology.jpg" alt="Psychology">
+    <div class="overlay"><h3>Psychology</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/unani-medicine-manufacturers-in-india.jpg" alt="Unani">
+    <div class="overlay"><h3>Unani</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Aromatherapy.webp" alt="Aromatherapy">
+    <div class="overlay"><h3>Aromatherapy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Yoga & Pranayam.jpg" alt="Yoga & Pranayam">
+    <div class="overlay"><h3>Yoga & Pranayam</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Homeopathy.jpg" alt="Homeopathy">
+    <div class="overlay"><h3>Homeopathy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Reiki & Energy Healing.webp" alt="Reiki & Energy Healing">
+    <div class="overlay"><h3>Reiki & Energy Healing</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Chakra Healing.webp" alt="Chakra Healing">
+    <div class="overlay"><h3>Chakra Healing</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/DNA & Ancestral Healing.webp" alt="DNA & Ancestral Healing">
+    <div class="overlay"><h3>DNA & Ancestral Healing</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Light Language Healing.avif" alt="Light Language Healing">
+    <div class="overlay"><h3>Light Language Healing</h3></div>
+  </div>
+
+  <!-- <div class="card">
+    <img src="./images/Music & Sound Therapy.webp" alt="Music & Sound Therapy">
+    <div class="overlay"><h3>Music & Sound Therapy</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Childhood Trauma Healing.webp" alt="Childhood Trauma Healing">
+    <div class="overlay"><h3>Childhood Trauma Healing</h3></div>
+  </div> -->
+
+  <div class="card">
+    <img src="./images/Karmic Clearing.webp" alt="Karmic Clearing">
+    <div class="overlay"><h3>Karmic Clearing</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Mantra Healing.jpg" alt="Mantra Healing">
+    <div class="overlay"><h3>Mantra Healing</h3></div>
+  </div>
+
+  <div class="card">
+    <img src="./images/Past Life Regression.jpg" alt="Past Life Regression">
+    <div class="overlay"><h3>Past Life Regression</h3></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-4" style="background-color: #f4e469;">
+        <div class="container">
+            <p class="mb-2 text-dark">
+                &copy; 2025 All rights reserved | <strong>Tiatech  Innovations Pvt. Ltd.</strong>
+            </p>
+            <p class="mb-0 text-dark">
+                <a href="./terms.html" class="text-dark text-decoration-none me-3">Terms & Conditions</a> |
+                <a href="./privacy.html" class="text-dark text-decoration-none ms-3">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
