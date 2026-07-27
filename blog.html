@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tia's  Innovations OPC Pvt Ltd </title>
+    <link rel="icon" href="./images/logo-new.jfif" type="image/x-icon">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P2VB5Q3Q');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2VB5Q3Q"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+
+    <!-- Main navigation -->
+    <nav class="navbar navbar-expand-lg  bg-white main-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="./images/logo-new.jfif" alt="Tia' logo" width="80" height="60" class="rounded" />
+            </a>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products & Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                            <li><a class="dropdown-item" href="#">Product Catalog</a></li>
+                            <li><a class="dropdown-item" href="#">Ongoing Projects</a></li>
+                            <li><a class="dropdown-item" href="#">Completed Work</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="healer.html">Tia's Healer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact Us</a></li>
+                    <li class="nav-item d-flex align-items-center ms-lg-3">
+                        <a class="nav-link d-none d-lg-inline" href="#search" title="Search"><i
+                                class="bi bi-search"></i></a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-primary cta-btn d-flex align-items-center"
+                            href="https://play.google.com/store/apps/details?id=com.tias.healing" target="_blank"
+                            rel="noopener noreferrer">
+
+                            <!-- App Icon (Font Awesome / Custom Image) -->
+                            <i class="fab fa-google-play me-2"></i>
+
+                            <img src="./images/888857.png" width="20px"> Download Now
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- Ketaki's blog embedd code starts here-->
+        
+    <div class="responsive-blog-container">
+    <!-- lazy loading prevents the frame from slowing down initial page loads on mobile -->
+    <iframe src="https://tias-healing.blogspot.com" title="My Blog" loading="lazy"></iframe>
+    </div>
+
+    <style>
+    .responsive-blog-container {
+        position: relative;
+        width: 100%;
+        /* On mobile, a fixed height can look awkward. 
+        Using a percentage height based on screen size keeps it proportional */
+        height: 75vh; 
+        margin: 0 auto;
+        overflow-y: auto;
+        /* Smooth scrolling behavior specifically for mobile Safari/Chrome */
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    .responsive-blog-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* MEDIA QUERY: Optimizations specifically for small screens */
+    @media screen and (max-width: 768px) {
+        .responsive-blog-container {
+        height: 80vh; /* Gives the blog slightly more vertical room on long mobile screens */
+        padding: 0 10px; /* Prevents text from sticking to the absolute edge of the glass */
+        }
+    }
+    </style>
+
+
+
+    <!-- Ketaki's blog embedd code till here-->
+
+
+
+
+
+
+
+    <!-- Toast Container -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100">
+        <div id="toastBox" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div id="toastMessage" class="toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mobile = document.getElementById("mobile").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            const toastBox = document.getElementById("toastBox");
+            const toastMessage = document.getElementById("toastMessage");
+
+            try {
+                const response = await fetch("https://tiasinnovations.com/api/user/customerQuery", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, mobile, message })
+                });
+
+                const result = await response.json();
+                const bsToast = new bootstrap.Toast(toastBox);
+
+                if (response.ok) {
+                    toastBox.classList.remove("bg-danger", "bg-warning");
+                    toastBox.classList.add("bg-success");
+                    toastMessage.innerHTML = `✅ ${result.message || "Your message has been sent successfully!"}`;
+                    document.getElementById("contactForm").reset();
+                } else {
+                    toastBox.classList.remove("bg-success", "bg-warning");
+                    toastBox.classList.add("bg-danger");
+                    toastMessage.innerHTML = `❌ ${result.message || "Something went wrong. Please try again."}`;
+                }
+                bsToast.show();
+            } catch (error) {
+                const bsToast = new bootstrap.Toast(toastBox);
+                toastBox.classList.remove("bg-success", "bg-danger");
+                toastBox.classList.add("bg-warning");
+                toastMessage.innerHTML = "⚠️ Failed to connect to server. Try again later.";
+                bsToast.show();
+            }
+        });
+    </script>
+
+    <!-- Bootstrap JS (needed for toast) -->
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-4" style="background-color: #f4e469;">
+        <div class="container">
+            <p class="mb-2 text-dark">
+                &copy; 2025 All rights reserved | <strong>Tia's  Innovations Pvt. Ltd.</strong>
+            </p>
+            <p class="mb-0 text-dark">
+                <a href="./terms.html" class="text-dark text-decoration-none me-3">Terms & Conditions</a> |
+                <a href="./privacy.html" class="text-dark text-decoration-none ms-3">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        const texts = [
+            "Effective Solutions for",
+            "Insomnia Relief",
+            "Better Sleep Naturally",
+            "Ancestral Healing",
+            "Emotional Wellness"
+        ];
+
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+        const typingElement = document.getElementById("typing-text");
+
+        function type() {
+            if (count === texts.length) {
+                count = 0; // loop
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            typingElement.textContent = letter;
+
+            if (letter.length === currentText.length) {
+                setTimeout(() => {
+                    index = 0;
+                    count++;
+                    type();
+                }, 1500); // wait before deleting/next
+            } else {
+                setTimeout(type, 100);
+            }
+        }
+
+        type();
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
