@@ -501,7 +501,8 @@
           padding: 20px;
       }
 
-      .wellness-img img {
+      .wellness-img img,
+      .wellness-img video {
           width: 480px;
           /* Fixed width */
           height: 600px;
@@ -515,7 +516,8 @@
       }
 
       @media (max-width: 991px) {
-          .wellness-img img {
+          .wellness-img img,
+          .wellness-img video {
               width: 100%;
               height: auto;
           }
