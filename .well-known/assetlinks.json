@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.user.healme",
+      "sha256_cert_fingerprints": [
+        "27:EB:14:FA:0E:0C:B4:E6:42:5B:37:97:D2:5F:0B:57:6B:31:94:CF:0F:5B:86:17:FD:EF:73:04:CC:FF:09:2A"
+      ]
+    }
+  }
+]
